@@ -1,0 +1,27 @@
+{
+  "name": "nodejs_openia_integration",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MOURAD-TULIMAT/NodeJS_OpenIA_Integration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MOURAD-TULIMAT/NodeJS_OpenIA_Integration/issues"
+  },
+  "homepage": "https://github.com/MOURAD-TULIMAT/NodeJS_OpenIA_Integration#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "openai": "^5.20.3"
+  }
+}
