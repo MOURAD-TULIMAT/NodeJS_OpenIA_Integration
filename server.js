@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import ChatMessage from "./models/ChatMessage.js";
 
 dotenv.config();
-mongoose.connect("mongodb://localhost:27017/ai_chat", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log("✅ MongoDB connected"))
