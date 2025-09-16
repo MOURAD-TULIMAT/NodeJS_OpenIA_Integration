@@ -8,14 +8,25 @@ const app = express();
 app.use(bodyParser.json());
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const conversations = {}; // { userId: [messages...] }
 
 app.post("/chat", async (req, res) => {
-  const { message } = req.body;
+  const { userId, message } = req.body;
+
+  if (!conversations[userId]) {
+    conversations[userId] = [];
+  }
+
+  conversations[userId].push({ role: "user", content: message });
+
   const response = await openai.chat.completions.create({
     model: "gpt-4o-mini",
-    messages: [{ role: "user", content: message }],
+    messages: conversations[userId],
   });
-  res.json({ reply: response.choices[0].message.content });
-});
 
+  const reply = response.choices[0].message;
+  conversations[userId].push(reply);
+
+  res.json({ reply: reply.content });
+});
 app.listen(3001, () => console.log("Server running on http://localhost:3001"));
